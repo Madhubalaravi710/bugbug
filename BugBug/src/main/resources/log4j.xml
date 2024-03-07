@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+
+<log4j:configuration>
+
+
+    <appender name="fileAppender1" class="org.apache.log4j.RollingFileAppender">
+
+        <param name="Threshold" value="ALL" />
+        <param name="MaxFileSize" value="3KB" />
+        <param name="MaxBackupIndex" value="10" />
+        <param name="File" value="target/SeleniumEvent.log" />
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{MMM-dd-yyyy HH:mm:ss:SSS} %-5p %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="fileAppender2" class="org.apache.log4j.RollingFileAppender">
+
+        <param name="Threshold" value="ALL" />
+        <param name="MaxFileSize" value="3KB" />
+        <param name="MaxBackupIndex" value="10" />
+        <param name="File" value="target/Scenario.log" />
+        
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{MMM-dd-yyyy HH:mm:ss:SSS} %-5p %m%n" />
+        </layout>
+    </appender>
+        
+   <appender name="fileAppender3" class="org.apache.log4j.RollingFileAppender">
+
+        <param name="Threshold" value="ALL" />
+        <param name="MaxFileSize" value="3KB" />
+        <param name="MaxBackupIndex" value="10" />
+        <param name="File" value="target/Error.log" />
+        
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{MMM-dd-yyyy HH:mm:ss:SSS} %-5p %m%n" />
+        </layout>
+    </appender>
+
+
+    <!--sets the priority log level for org.springframework -->
+    <logger name="SeleniumEventLog" additivity="false">
+         <appender-ref ref="fileAppender1"/>
+    </logger>
+
+
+    <logger name="ScenarioLog" additivity="false">
+        <appender-ref ref="fileAppender2" />
+    </logger>
+    
+    <logger name="ErrorLog" additivity="false">
+        <appender-ref ref="fileAppender3" />
+    </logger>
+
+</log4j:configuration>
